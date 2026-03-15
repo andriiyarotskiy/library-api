@@ -4,9 +4,11 @@ click==8.3.1
 Django==5.2.12
 django-debug-toolbar==6.2.0
 djangorestframework==3.16.1
+djangorestframework_simplejwt==5.5.1
 mypy_extensions==1.1.0
 packaging==26.0
 pathspec==1.0.4
 platformdirs==4.9.4
+PyJWT==2.12.1
 pytokens==0.4.1
 sqlparse==0.5.5
