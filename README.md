@@ -1,5 +1,7 @@
 # Library Management System - Development Tasks
 
+[doc](https://docs.google.com/document/d/1wkWketx6ROKlrfpUqKJEJhS8EzVe3BOX/edit#heading=h.cdjaa0qni1m6/)
+
 A comprehensive guide for implementing a Library Management System with Django REST Framework, featuring Books, Users, Borrowing, and Payment services with JWT authentication and role-based permissions.
 
 ---
