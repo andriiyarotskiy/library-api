@@ -24,7 +24,6 @@ class BorrowingsView(
     permission_classes = (IsAuthenticated,)
 
     def get_serializer_class(self):
-        print("123123", self.action)
         if self.action == "retrieve":
             return BorrowingDetailSerializer
         elif self.action == "list":
