@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "books",
     "users",
     "borrowings",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -134,10 +135,18 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=12),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     # "AUTH_HEADER_NAME": "HTTP_X_ACCESS_TOKEN",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Library-API",
+    "DESCRIPTION": "API for Library with the ability to borrow and return books",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }

@@ -1,3 +1,5 @@
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -45,6 +47,20 @@ class BorrowingsView(
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+    @extend_schema(
+        request=None,
+        responses={
+            200: {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "string",
+                        "example": '"Book Title" book was returned by the user to the library',
+                    }
+                },
+            }
+        },
+    )
     @action(detail=True, methods=["post"], url_path="return")
     def return_book(self, request, pk=None):
         borrowing = self.get_object()
@@ -56,3 +72,20 @@ class BorrowingsView(
             {"success": f'"{boot_title}" book was returned by the user to the library'},
             status=status.HTTP_200_OK,
         )
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name="is_active",
+                description="Filter by active borrowings",
+                type=OpenApiTypes.BOOL,
+            ),
+            OpenApiParameter(
+                name="user_id",
+                type=OpenApiTypes.INT,
+                description="Filter by user ID (*only for admins) ex ?user_id=2",
+            ),
+        ]
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
