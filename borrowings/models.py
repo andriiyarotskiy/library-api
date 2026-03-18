@@ -24,7 +24,7 @@ class Borrowing(models.Model):
 
     @staticmethod
     def validate_return_date(return_date, error_to_raise):
-        today_date = datetime.today().date()
+        today_date = datetime.today().strftime("%Y-%m-%d")
         if return_date <= today_date:
             raise error_to_raise(
                 {
