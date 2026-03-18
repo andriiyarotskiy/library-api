@@ -17,6 +17,10 @@ A simple REST API for managing a library's book inventory and tracking user borr
 # 1. Clone the repository
 git clone <your-repo-url>
 cd library-api
+# Copy .env.sample to .env
+cp .env.sample .env 
+# Edit .env and add your configuration:
+SECRET_KEY=your-secret-key-here
 
 # 2. Create virtual environment
 python -m venv .venv
